@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'SUNSHINE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SUNSHINE_URL', plugin_dir_url( __FILE__ ) );
 define( 'SUNSHINE_VERSION', '2.0' );
-define( 'SUNSHINE_STORE_URL', 'http://sunshine.staging.wpengine.com' );
+define( 'SUNSHINE_STORE_URL', 'https://www.sunshinephotocart.com' );
 
 include_once( 'classes/singleton.class.php' );
 include_once( 'classes/session.class.php' );
