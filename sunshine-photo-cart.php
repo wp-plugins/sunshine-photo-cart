@@ -22,10 +22,6 @@
  * You should have received a copy of the GNU General Public License
  * along with Sunshine Photo Cart. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package SunshinePhotoCart
- * @category Core
- * @author Derek Ashauer
- * @version 2.0
  */
 
 // Exit if accessed directly
@@ -34,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'SUNSHINE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SUNSHINE_URL', plugin_dir_url( __FILE__ ) );
 define( 'SUNSHINE_VERSION', '2.0' );
-define( 'SUNSHINE_STORE_URL', 'http://sunshine.staging.wpengine.com' );
+define( 'SUNSHINE_STORE_URL', 'https://www.sunshinephotocart.com' );
 
 include_once( 'classes/singleton.class.php' );
 include_once( 'classes/session.class.php' );
