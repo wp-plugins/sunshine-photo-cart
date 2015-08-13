@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'SUNSHINE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SUNSHINE_URL', plugin_dir_url( __FILE__ ) );
 define( 'SUNSHINE_VERSION', '2.0' );
-define( 'SUNSHINE_STORE_URL', 'https://www.sunshinephotocart.com' );
+define( 'SUNSHINE_STORE_URL', 'http://sunshine.staging.wpengine.com' );
 
 include_once( 'classes/singleton.class.php' );
 include_once( 'classes/session.class.php' );
@@ -117,7 +117,7 @@ function sunshine_update_check() {
 add_action( 'init', 'sunshine_pro_license', 0 );
 function sunshine_pro_license() {
 	if( class_exists( 'Sunshine_License' ) && is_admin() ) {
-		$sunshine_pro_license = new Sunshine_License( __FILE__, 'Sunshine Photo Cart Pro', '2.0', 'Sunshine Photo Cart' );
+		$sunshine_pro_license = new Sunshine_License( 'sunshine-pro', 'Sunshine Photo Cart Pro', '2.0', 'Sunshine Photo Cart' );
 	}
 }
 
