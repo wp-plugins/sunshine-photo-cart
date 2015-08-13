@@ -404,6 +404,31 @@ function sunshine_user_favorites_link_row( $actions, $user ) {
 	return $actions;
 }
 
+add_action( 'show_user_profile', 'sunshine_admin_user_show_favorites' );
+add_action( 'edit_user_profile', 'sunshine_admin_user_show_favorites' );
+function sunshine_admin_user_show_favorites( $user ) {
+	if ( current_user_can( 'manage_options' ) ) {
+		$favorites = get_user_meta( $user->ID, 'sunshine_favorite' );
+		if ( $favorites ) {
+			echo '<h3 id="sunshine-favorites">'.__( 'Sunshine Favorites','sunshine' ).' ('.count( $favorites ).')</h3>';
+			echo '<ul>';
+			foreach ( $favorites as $favorite ) {
+				$attachment = get_post( $favorite );
+				$image = wp_get_attachment_image_src( $attachment->ID, 'thumbnail' );
+				$url = get_permalink( $attachment->ID );
+?>
+			<li style="list-style: none; float: left; margin: 0 20px 20px 0;">
+				<a href="<?php echo $url; ?>"><img src="<?php echo $image[0]; ?>" height="100" alt="" /></a><br />
+				<?php echo get_the_title( $attachment->ID ); ?>
+			</li>
+		<?php }
+			echo '</ul><br clear="all" />';
+		}
+	}
+
+}
+
+
 /**************************
 	EMAIL AUTOMATION
 	Add trigger
