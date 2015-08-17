@@ -45,7 +45,7 @@ While the core plugin is free, there are paid add-ons to improve Sunshine's feat
 * [Automated email marketing](https://www.sunshinephotocart.com/addon/automated-email-marketing/?utm_source=wordpress.org&utm_medium=link&utm_campaign=readme)
 * [Lightbox](https://www.sunshinephotocart.com/addon/lightbox/?utm_source=wordpress.org&utm_medium=link&utm_campaign=readme)
 * [Masonry](https://www.sunshinephotocart.com/addon/masonry/?utm_source=wordpress.org&utm_medium=link&utm_campaign=readme)
-* [Client messaging](https://www.sunshinephotocart.com/addon/client-messaging/?utm_source=wordpress.org&utm_medium=link&utm_campaign=readme)
+* [Client messaging](https://www.sunshinephotocart.com/addon/messaging/?utm_source=wordpress.org&utm_medium=link&utm_campaign=readme)
 * [Minimum order](https://www.sunshinephotocart.com/addon/minimum-order/?utm_source=wordpress.org&utm_medium=link&utm_campaign=readme)
 * [MailChimp integration](https://www.sunshinephotocart.com/addon/mailchimp/?utm_source=wordpress.org&utm_medium=link&utm_campaign=readme)
 * [Campaign Monitor integration](https://www.sunshinephotocart.com/addon/campaign-monitor/?utm_source=wordpress.org&utm_medium=link&utm_campaign=readme)
