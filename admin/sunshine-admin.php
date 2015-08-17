@@ -147,7 +147,7 @@ function sunshine_system_info() {
 
 function sunshine_addons() {
 	global $sunshine;
-	if ( get_option( 'sunshine_photo_cart_pro_license_active') == 'valid' ) return;
+	if ( get_option( 'sunshine_pro_license_active') == 'valid' ) return;
 	
 ?>
 	<div class="wrap sunshine" id="sunshine-addons">
