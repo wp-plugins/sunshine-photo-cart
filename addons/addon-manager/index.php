@@ -13,11 +13,11 @@ add_action( 'tgmpa_register', 'sunshine_addon_manager' );
 function sunshine_addon_manager() {
 	global $sunshine;
 	
-	if ( get_option( 'sunshine_photo_cart_pro_license_active') != 'valid' ) return;
+	if ( get_option( 'sunshine_pro_license_active') != 'valid' ) return;
 
 	$plugins = array();
 
-	if ( false === ( $plugins = get_transient( 'xsunshine_addons_manager' ) ) ) {
+	if ( false === ( $plugins = get_transient( 'sunshine_addons_manager' ) ) ) {
 
 		$url = SUNSHINE_STORE_URL.'/?sunshine_addons_feed&pro=1';
 		$feed = wp_remote_get( esc_url_raw( $url ), array( 'sslverify' => false ) );
