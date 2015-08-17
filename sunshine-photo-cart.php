@@ -104,6 +104,7 @@ function sunshine_init() {
 add_action( 'admin_init', 'sunshine_update_check' );
 function sunshine_update_check() {
 	global $sunshine;
+	if ( $sunshine->version == '' ) return;
 	if ( version_compare( $sunshine->version, SUNSHINE_VERSION, '<' ) || $sunshine->version == 0 || isset( $_GET['sunshine_force_update'] ) ) {
 		$sunshine->update();
 		add_action( 'admin_notices', 'sunshine_manual_update' );
