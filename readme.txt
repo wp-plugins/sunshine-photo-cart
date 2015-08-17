@@ -14,9 +14,7 @@ Client Gallery & Photo Cart Plugin for WordPress
 
 == Description ==
 
-THIS IS A PRE-RELEASE TO CONFIRM PROPER SUBMISSION TO WORDPRESS.ORG REPO - not quite ready to be used yet.
-
-Sunshine Photo Cart is a complete client gallery and photo cart plugin built specifically for photographers. Since it's first release in 2013, Sunshine was a paid plugin - but now it is free! This free version is fully functional and has the following features:
+[Sunshine Photo Cart](https://www.sunshinephotocart.com) is a complete client gallery and photo cart plugin built specifically for photographers. Since it's first release in 2013, Sunshine was a paid plugin - but now it is free! This free version is fully functional and has the following features:
 
 * Cart system for letting users choose photo, select product and add to cart for purchase
 * Accept offline payments (check) or online payments (PayPal)
