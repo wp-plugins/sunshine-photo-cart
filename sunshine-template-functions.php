@@ -1375,11 +1375,9 @@ function sunshine_gallery_requires_email( $gallery_id ) {
 	if ( $requires_email != 'email' ) {
 		return false;
 	} 
-	echo 'requires email';
 	if ( !is_array( SunshineSession::instance()->gallery_emails ) ) {
 		return true;
 	}
-	echo 'gallery_emails session is array';
 	sunshine_dump_var( SunshineSession::instance()->gallery_emails );
 	$in_gallery_emails = ( in_array( $gallery_id, SunshineSession::instance()->gallery_emails ) ) ? true : false;
 	if ( $in_gallery_emails ) {
