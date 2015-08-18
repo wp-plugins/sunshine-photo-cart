@@ -5,7 +5,7 @@
  * Description: Client Gallery Photo Cart & Proofing Plugin for WordPress
  * Author: Sunshine Photo Cart
  * Author URI: https://www.sunshinephotocart.com
- * Version: 2.0.1
+ * Version: 2.0.1 
  * Text Domain: sunshine
  * Domain Path: languages
  *
