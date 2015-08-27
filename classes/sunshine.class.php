@@ -575,6 +575,9 @@ class Sunshine {
 		$sunshine->version = SUNSHINE_VERSION;
 		
 		do_action('sunshine_update');
+		
+		wp_redirect( admin_url( '/admin.php?page=sunshine_about&sunshine_updated' ) );
+		exit;
 
 	}
 

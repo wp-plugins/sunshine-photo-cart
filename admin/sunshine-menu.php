@@ -26,6 +26,9 @@ function sunshine_admin_menu() {
 	foreach ( $sunshine_admin_submenu as $item ) {
 		add_submenu_page( 'sunshine_admin', $item[0], $item[1], $item[2], $item[3], ( !empty( $item[4] ) ) ? $item[4] : '' );
 	}
+	
+	if ( isset( $_GET['page'] ) && $_GET['page'] == 'sunshine_about' )
+		add_dashboard_page( __('About Sunshine Photo Cart', 'sunshine' ), __('About Sunshine Photo Cart', 'sunshine' ), 'manage_options', 'sunshine_about', 'sunshine_about' );
 
 	// "Hidden" page for image processor - allows us to make the page but not appear in menu
 	// This WordPress variable is essential: it stores which admin pages are registered to WordPress

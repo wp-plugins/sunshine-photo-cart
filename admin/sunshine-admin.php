@@ -7,7 +7,6 @@ require_once ( 'sunshine-image-processor.php' );
 require_once ( 'sunshine-products.php' );
 require_once ( 'sunshine-bulk-add-products.php' );
 require_once ( 'sunshine-orders.php' );
-require_once ( 'sunshine-discounts.php' );
 require_once ( 'sunshine-users.php' );
 
 
@@ -56,6 +55,83 @@ function sunshine_admin_cssjs() {
 }
 add_action( 'admin_init', 'sunshine_admin_cssjs' );
 
+function sunshine_about() {
+	global $sunshine;
+	?>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=228213277229357";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<div id="sunshine-about-header">
+		<h1><?php printf( __( 'Welcome to Sunshine Photo Cart %s', 'sunshine' ), $sunshine->version ); ?></h1>
+		<p>
+			<?php
+				if ( isset( $_GET['sunshine_installed'] ) ) {
+					$message = __( 'Thanks, all done!', 'sunshine' );
+				} elseif ( isset( $_GET['sunshine_updated'] ) ) {
+					$message = __( 'Thank you for updating to the latest version!', 'sunshine' );
+				} else {
+					$message = __( 'Thanks for installing!', 'sunshine' );
+				}
+
+				printf( __( '<strong>%s</strong> Sunshine %s is the most comprehensive client proofing and photo cart plugin for WordPress. We hope you enjoy greater selling success!', 'sunshine' ), $message, $sunshine->version );
+			?>
+		</p>
+	</div>
+	
+	<div class="wrap about-wrap sunshine-about-wrap">
+
+		<div class="fb-page sunshine-fb-page" data-href="https://www.facebook.com/sunshinephotocart" data-width="300" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/sunshinephotocart"><a href="https://www.facebook.com/sunshinephotocart">Sunshine Photo Cart</a></blockquote></div></div>
+
+		<p class="sunshine-actions">
+			<a href="<?php echo admin_url('admin.php?page=sunshine'); ?>" class="button button-primary"><?php _e( 'Settings', 'sunshine' ); ?></a>
+			<a href="<?php echo esc_url( 'https://www.sunshinephotocart.com/docs' ); ?>" class="docs button button-primary" target="_blank"><?php _e( 'Docs', 'sunshine' ); ?></a>
+			<?php if ( get_option( 'sunshine_pro_license_active') != 'valid' ) { ?>
+			<a href="<?php echo esc_url( 'https://www.sunshinephotocart.com/pro' ); ?>" class="button" target="_blank"><?php _e( 'Go Pro!', 'sunshine' ); ?></a>
+			<?php } ?>
+		</p>
+		
+
+		<div class="sunshine-changelog">
+			<?php 
+			$readme = file_get_contents( SUNSHINE_PATH . '/readme.txt' ); 
+			$readme_pieces = explode( '== Changelog ==', $readme );
+			$changelog = nl2br( htmlspecialchars( trim( $readme_pieces[1] ) ) ); 
+			$changelog = str_replace( array( ' =', '= ' ), array( '</h3>', '<h3>' ), $changelog );
+			if (($nth = nth_strpos($changelog, '<h3>', 7, true)) !== false) { 
+			    $changelog = substr($changelog, 0, $nth); 
+			} 
+			?>
+			<h2>What's New</h2>
+			<div class="changelog"><?php echo $changelog; ?></div>					
+		</div>
+		
+	</div>
+	<?php
+}
+
+function nth_strpos($str, $substr, $n, $stri = false) 
+{ 
+    if ($stri) { 
+        $str = strtolower($str); 
+        $substr = strtolower($substr); 
+    } 
+    $ct = 0; 
+    $pos = 0; 
+    while (($pos = strpos($str, $substr, $pos)) !== false) { 
+        if (++$ct == $n) { 
+            return $pos; 
+        } 
+        $pos++; 
+    } 
+    return false; 
+}
+
 function sunshine_system_info() {
 	global $sunshine;
 ?>
@@ -72,6 +148,7 @@ function sunshine_system_info() {
 
 	SITE_URL:                 <?php echo site_url() . "\n"; ?>
 	HOME_URL:                 <?php echo home_url() . "\n"; ?>
+	Admin:                 	  <?php echo admin_url() . "\n"; ?>
 
 	WordPress Version:        <?php echo get_bloginfo( 'version' ) . "\n"; ?>
 
@@ -82,18 +159,9 @@ function sunshine_system_info() {
 	PHP Memory Limit:         <?php echo ini_get( 'memory_limit' ) . "\n"; ?>
 	PHP Post Max Size:        <?php echo ini_get( 'post_max_size' ) . "\n"; ?>
 
-	WP_DEBUG:                 <?php echo defined( 'WP_DEBUG' ) ? WP_DEBUG ? 'Enabled' . "\n" : 'Disabled' . "\n" : 'Not set' . "\n" ?>
-
 	Show On Front:            <?php echo get_option( 'show_on_front' ) . "\n" ?>
 	Page On Front:            <?php echo get_option( 'page_on_front' ) . "\n" ?>
 	Page For Posts:           <?php echo get_option( 'page_for_posts' ) . "\n" ?>
-
-	Session:                  <?php echo isset( $_SESSION ) ? 'Enabled' : 'Disabled'; ?><?php echo "\n"; ?>
-	Session Name:             <?php echo esc_html( ini_get( 'session.name' ) ); ?><?php echo "\n"; ?>
-	Cookie Path:              <?php echo esc_html( ini_get( 'session.cookie_path' ) ); ?><?php echo "\n"; ?>
-	Save Path:                <?php echo esc_html( ini_get( 'session.save_path' ) ); ?><?php echo "\n"; ?>
-	Use Cookies:              <?php echo ( ini_get( 'session.use_cookies' ) ? 'On' : 'Off' ); ?><?php echo "\n"; ?>
-	Use Only Cookies:         <?php echo ( ini_get( 'session.use_only_cookies' ) ? 'On' : 'Off' ); ?><?php echo "\n"; ?>
 
 	UPLOAD_MAX_FILESIZE:      <?php if( function_exists( 'phpversion' ) ) echo ( sunshine_let_to_num( ini_get( 'upload_max_filesize' ) )/( 1024*1024 ) )."MB"; ?><?php echo "\n"; ?>
 	POST_MAX_SIZE:            <?php if( function_exists( 'phpversion' ) ) echo ( sunshine_let_to_num( ini_get( 'post_max_size' ) )/( 1024*1024 ) )."MB"; ?><?php echo "\n"; ?>
@@ -233,8 +301,14 @@ Clean up Media Library
 ***********************/
 add_action( 'pre_get_posts', 'sunshine_clean_media_library' );
 function sunshine_clean_media_library( $query ) {
-	$screen = get_current_screen();
-	if ( is_admin() && is_main_query() && $query->get( 'post_type' ) == 'attachment' && $screen->id == 'upload' ) {
+	if ( is_admin() && is_main_query() && $query->get( 'post_type' ) == 'attachment' ) {
+		if ( ! function_exists( 'get_current_screen' ) ) { 
+			return;
+		}
+		$screen = get_current_screen();
+		if ( !$screen->id == 'upload' ) {
+			return;
+		}
 		$galleries = get_posts( 'post_type=sunshine-gallery&nopaging=true&post_status=any' );
 		$gallery_ids = array();
 		foreach ( $galleries as $gallery ) {

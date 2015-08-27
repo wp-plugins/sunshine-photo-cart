@@ -50,7 +50,7 @@ class SunshinePaymentPaypal extends SunshinePaymentMethods {
 			$paypal_args['cancel_return'] = sunshine_url( 'checkout' );
 			$paypal_args['notify_url'] = trailingslashit( get_bloginfo( 'url' ) ).'?paypal_notify=paypal_standard_ipn';
 			$paypal_args['address_override'] = 1;
-			if ( $sunshine->cart->shipping_method['id'] == 'pickup' ) // Only ask for address if not pickup
+			if ( $sunshine->cart->shipping_method['id'] == 'pickup' || $sunshine->cart->shipping_method['id'] == 'download' ) // Only ask for address if not pickup
 				$paypal_args['no_shipping'] = 1;
 			else
 				$paypal_args['no_shipping'] = 2;

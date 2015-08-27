@@ -48,6 +48,8 @@ class SunshineFrontend extends SunshineSingleton {
 		if (!is_sunshine())
 			return $content;
 		
+		define(	'DONOTCACHEPAGE', true );
+		
 		if (isset($_GET['sunshine_search'])) {
 			$content = self::get_template('search-results');
 		} elseif (isset(self::$current_image)) {
@@ -386,7 +388,7 @@ class SunshineFrontend extends SunshineSingleton {
 		}
 		
 		$menu[10] = array(
-			'name' => __('Galleries','sunshine'),
+			'name' => get_the_title( $sunshine->options['page'] ),
 			'url' => sunshine_url('home'),
 			'class' => 'sunshine-galleries'
 		);

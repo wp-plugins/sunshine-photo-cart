@@ -336,7 +336,7 @@ function sunshine_checkout() {
 			$vars['shipping_address'] = $_POST['address'];
 			$vars['shipping_address2'] = $_POST['address2'];
 			$vars['shipping_city'] = $_POST['city'];
-			$vars['shipping_state'] = $_POST['_state'];
+			$vars['shipping_state'] = $_POST['state'];
 			$vars['shipping_zip'] = $_POST['zip'];
 		}
 		foreach ( $vars as $key => $item ) {

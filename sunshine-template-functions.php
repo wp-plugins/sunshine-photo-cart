@@ -1378,7 +1378,6 @@ function sunshine_gallery_requires_email( $gallery_id ) {
 	if ( !is_array( SunshineSession::instance()->gallery_emails ) ) {
 		return true;
 	}
-	sunshine_dump_var( SunshineSession::instance()->gallery_emails );
 	$in_gallery_emails = ( in_array( $gallery_id, SunshineSession::instance()->gallery_emails ) ) ? true : false;
 	if ( $in_gallery_emails ) {
 		return false;
