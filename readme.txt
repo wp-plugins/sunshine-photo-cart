@@ -33,6 +33,7 @@ Client Proofing Gallery & Photo Cart Plugin for WordPress
 * International ready - Works with all currencies and translated into German, French, Spanish, Dutch, Finnish, Portuguese, British, Norwegian
 
 [Check out the demo](http://demo.sunshinephotocart.com) to see it in action!
+
 [Join our Sunshine User Facebook Group](https://www.facebook.com/groups/sunshinephotocart/) to discuss client proofing in general or talk about Sunshine Photo Cart specifically!
 
 
