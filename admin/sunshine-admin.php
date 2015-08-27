@@ -38,6 +38,7 @@ function sunshine_notices() {
 	*/
 	if ( get_option( 'page_on_front' ) == $sunshine->options['page'] && !SunshineUser::get_user_meta( 'sunshine_nag_sunshine_not_front_page' ) )
 		echo '<div class="error"><p>'.sprintf( __( 'Sunshine cannot be the front page of your WordPress installation. <a href="%s" target="_blank">Learn more on how to resolve this issue</a>.','sunshine' ),'http://www.sunshinephotocart.com/docs/sunshine-cannot-be-your-front-page/' ).' <a href="?sunshine_nag_sunshine_not_front_page=1" style="float: right;">'.__( 'Dismiss','sunshine' ).'</a></p></div>';
+	
 }
 
 function sunshine_manual_update() {
@@ -46,7 +47,7 @@ function sunshine_manual_update() {
 
 function sunshine_admin_cssjs() {
 	global $post_type;
-	wp_register_style( 'sunshine-admin-css', plugins_url( 'assets/css/admin.css', dirname( __FILE__ ) ) );
+	wp_register_style( 'sunshine-admin-css', plugins_url( 'assets/css/admin.css', dirname( __FILE__ ) ), '', SUNSHINE_VERSION );
 	wp_enqueue_style( 'sunshine-admin-css' );
 	wp_enqueue_script( 'jquery-ui-datepicker' );
 	wp_enqueue_style( 'jquery.ui.theme', plugins_url( 'assets/jqueryui/smoothness/jquery-ui-1.9.2.custom.css', dirname( __FILE__ ) ) );
@@ -95,7 +96,6 @@ function sunshine_about() {
 			<a href="<?php echo esc_url( 'https://www.sunshinephotocart.com/pro' ); ?>" class="button" target="_blank"><?php _e( 'Go Pro!', 'sunshine' ); ?></a>
 			<?php } ?>
 		</p>
-		
 
 		<div class="sunshine-changelog">
 			<?php 
